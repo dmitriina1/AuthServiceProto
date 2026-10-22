@@ -1,0 +1,215 @@
+:root {
+  --accent: #245b9e;
+  --accent-hover: #19477f;
+  --text: #202936;
+  --muted: #667085;
+  --border: #d9e0e8;
+  --background: #f7f8fa;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header__inner {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.site-brand {
+  color: var(--text);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.site-account-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-account-nav a,
+.site-account-nav button {
+  padding: 4px 0;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  font: inherit;
+  text-decoration: none;
+}
+
+.session-user {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.session-user a {
+  color: var(--muted);
+}
+
+.session-user a:hover {
+  color: var(--accent-hover);
+}
+
+.site-main {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.home-panel,
+.developer-tools {
+  max-width: 640px;
+}
+
+.home-panel h1 {
+  margin: 0 0 14px;
+  font-size: 2rem;
+  font-weight: 650;
+}
+
+.home-panel > p,
+.auth-card__header p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.home-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.developer-tools {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.developer-tools summary {
+  width: fit-content;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.developer-tools__links {
+  display: flex;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.auth-shell {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.auth-card__header {
+  margin-bottom: 24px;
+}
+
+.auth-card__header h1 {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  font-weight: 650;
+}
+
+.account-links {
+  margin-top: 16px;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  color: var(--muted);
+  font-size: .875rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  height: 1px;
+  flex: 1;
+  background: var(--border);
+  content: "";
+}
+
+.btn-primary,
+.btn-success {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-success:hover,
+.btn-success:focus {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn,
+.form-control,
+.form-check-input {
+  border-radius: 5px;
+}
+
+.btn {
+  min-height: 42px;
+}
+
+.form-control:focus,
+.form-check-input:focus,
+.btn:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgb(36 91 158 / 22%);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+textarea.font-monospace {
+  font-size: .875rem;
+}
+
+@media (max-width: 575px) {
+  .site-main {
+    padding-top: 32px;
+  }
+
+  .session-user {
+    display: none;
+  }
+
+  .home-actions,
+  .developer-tools__links {
+    flex-direction: column;
+  }
+}

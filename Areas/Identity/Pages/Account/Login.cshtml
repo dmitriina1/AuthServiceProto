@@ -1,0 +1,59 @@
+@page
+@model AuthServiceProto.Areas.Identity.Pages.Account.LoginModel
+
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<div class="auth-shell">
+    <section class="auth-card" aria-labelledby="login-title">
+        <header class="auth-card__header">
+            <h1 id="login-title">Вход в учётную запись</h1>
+            <p>Введите email и пароль.</p>
+        </header>
+
+        <form id="account" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Пароль" />
+                <label asp-for="Input.Password">Пароль</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" asp-for="Input.RememberMe" />
+                <label class="form-check-label" asp-for="Input.RememberMe">Запомнить меня</label>
+            </div>
+
+            <button id="login-submit" type="submit" class="w-100 btn btn-primary">Войти</button>
+
+            <div class="account-links">
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Создать аккаунт</a>
+            </div>
+        </form>
+
+        @if ((Model.ExternalLogins?.Count ?? 0) > 0)
+        {
+            <div class="auth-divider"><span>или</span></div>
+            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                @foreach (var provider in Model.ExternalLogins!)
+                {
+                    <button type="submit" class="w-100 btn btn-outline-primary" name="provider" value="@provider.Name">
+                        Войти через @(provider.DisplayName == "Yandex" ? "Яндекс" : provider.DisplayName)
+                    </button>
+                }
+            </form>
+        }
+    </section>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

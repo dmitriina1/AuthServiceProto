@@ -1,0 +1,36 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Сервис авторизации";
+}
+
+<section class="home-panel">
+    <h1>Единый вход в сервисы</h1>
+    <p>
+        Проверка замены Duende на OpenIddict: локальная учётная запись,
+        вход через Яндекс и выдача токенов по Authorization Code + PKCE.
+    </p>
+
+    @if (User.Identity?.IsAuthenticated != true)
+    {
+        <div class="home-actions">
+            <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Login">Войти</a>
+            <a class="btn btn-outline-primary" asp-area="Identity" asp-page="/Account/Register">Создать аккаунт</a>
+        </div>
+    }
+    else
+    {
+        <p class="home-session">Вы вошли как <strong>@User.Identity.Name</strong>.</p>
+    }
+</section>
+
+<details class="developer-tools">
+    <summary>Для разработчика</summary>
+    <div class="developer-tools__links">
+        @if (Model.ShowDevelopmentDemo)
+        {
+            <a asp-page="/Demo">Проверить Authorization Code + PKCE</a>
+        }
+        <a href="/.well-known/openid-configuration">Открыть OIDC discovery</a>
+    </div>
+</details>

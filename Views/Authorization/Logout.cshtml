@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Выход";
+}
+
+<div class="py-4">
+    <h1 class="h2">Выход</h1>
+    <p>Подтвердите завершение локальной SSO-сессии.</p>
+    <form method="post">
+        @Html.AntiForgeryToken()
+        <button class="btn btn-danger" type="submit">Выйти</button>
+        <a class="btn btn-outline-secondary" href="/">Отмена</a>
+    </form>
+</div>

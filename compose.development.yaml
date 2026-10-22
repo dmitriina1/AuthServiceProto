@@ -1,0 +1,23 @@
+name: authservice-development
+
+services:
+  # Локально контейнеризируем только PostgreSQL, приложение запускается через dotnet run для удобной отладки.
+  db:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: authservice
+      POSTGRES_USER: authservice
+      POSTGRES_PASSWORD: authservice-development-only
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - postgres-development-data:/var/lib/postgresql
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U authservice -d authservice" ]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  postgres-development-data:

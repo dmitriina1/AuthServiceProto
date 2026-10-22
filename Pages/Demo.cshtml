@@ -1,0 +1,26 @@
+@page "/demo"
+@model AuthServiceProto.Pages.DemoModel
+@{
+    ViewData["Title"] = "Демонстрация PKCE";
+}
+
+<div class="py-4">
+    <h1 class="h2">Authorization Code + PKCE</h1>
+    <p>
+        Оба клиента используют одну Identity-сессию входа, но получают токены для разных audiences.
+        Сначала запросите один токен, вернитесь и запросите второй: повторный вход не потребуется благодаря SSO.
+    </p>
+
+    <div class="d-flex gap-2 mb-3">
+        <button class="btn btn-primary" data-client="orders">Получить токен Orders</button>
+        <button class="btn btn-success" data-client="profile">Получить токен Profile</button>
+    </div>
+
+    <div id="status" class="alert alert-secondary">Выберите клиент.</div>
+    <label class="form-label" for="result">Ответ протокола/API</label>
+    <textarea id="result" class="form-control font-monospace" rows="16" readonly></textarea>
+</div>
+
+@section Scripts {
+    <script src="~/js/demo.js" asp-append-version="true"></script>
+}

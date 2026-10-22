@@ -1,0 +1,11 @@
+bin/
+obj/
+app.db
+app.db-shm
+app.db-wal
+*.user
+.dotnet-home/
+.development-data/
+.env
+.env.local
+TestResults/

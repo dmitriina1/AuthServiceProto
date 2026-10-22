@@ -1,0 +1,25 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Ошибка";
+}
+
+<h1 class="text-danger">Ошибка.</h1>
+<h2 class="text-danger">При обработке запроса произошла ошибка.</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Идентификатор запроса:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<h3>Режим Development</h3>
+<p>
+    В environment <strong>Development</strong> отображается подробная информация об ошибке.
+</p>
+<p>
+    <strong>Не включайте Development в развёрнутом приложении:</strong> exception может раскрыть пользователю
+    чувствительные данные. Для локальной отладки задайте <strong>ASPNETCORE_ENVIRONMENT=Development</strong>
+    и перезапустите приложение.
+</p>
